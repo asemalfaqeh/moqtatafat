@@ -19,6 +19,7 @@ public class ViewPagerAdapter extends androidx.viewpager.widget.PagerAdapter {
         mListData = listDate;
     }
 
+    //android
     @Override
     public int getCount() {
         return mListData.size();
