@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerVertical="true"
+    android:gravity="center_vertical"
+    android:background="@color/dark_white"
+    tools:context=".admin.ui.EditDeleteQouteActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/block_line"
+        android:layout_marginTop="50dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/title_quote"
+        android:layout_below="@id/block_line"
+        android:paddingRight="6dp"
+        android:gravity="right|center_vertical"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/edit_text_layout"
+        android:layout_marginLeft="8dp"
+        android:hint="@string/title_quote" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lines="10"
+        android:padding="8dp"
+        android:gravity="right|top"
+        android:id="@+id/content_edit_text"
+        android:textSize="20sp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/edit_text_layout"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:hint="المحتوى"
+        android:layout_below="@+id/title_quote"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:id="@+id/char_num"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/content_edit_text"
+        android:text="0/500"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="22dp"
+        android:layout_below="@id/content_edit_text">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:layout_margin="8dp"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="رجوع"
+            android:elevation="8dp"
+            android:background="@color/colorAccent"
+            android:id="@+id/back"/>
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:elevation="8dp"
+            android:layout_margin="8dp"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="حذف"
+            android:background="@color/red"
+            android:id="@+id/delete"/>
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:elevation="8dp"
+            android:layout_margin="8dp"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="حفظ"
+            android:background="@color/colorAccent"
+            android:id="@+id/save"/>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

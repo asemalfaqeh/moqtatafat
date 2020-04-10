@@ -1,5 +1,6 @@
 package com.af.moqtatfat.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,14 +8,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import com.af.moqtatfat.R;
+import com.af.moqtatfat.model.DocumentResponse;
+
 import java.util.List;
 
 public class ViewPagerAdapter extends androidx.viewpager.widget.PagerAdapter {
 
     private Context mContext;
-    private List<String> mListData;
+    private List<DocumentResponse> mListData;
 
-    public ViewPagerAdapter(Context context, List<String> listDate) {
+    ViewPagerAdapter(Context context, List<DocumentResponse> listDate) {
         mContext = context;
         mListData = listDate;
     }
@@ -35,14 +38,26 @@ public class ViewPagerAdapter extends androidx.viewpager.widget.PagerAdapter {
         container.removeView((View) object);
     }
 
+    @SuppressLint("SetTextI18n")
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
+
         LayoutInflater inflater = LayoutInflater.from(mContext);
+
         ViewGroup view = (ViewGroup) inflater.inflate(R.layout.pager_item, container, false);
-        final TextView textView = view.findViewById(R.id.content);
-        textView.setText(mListData.get(position));
+
+        DocumentResponse documentResponse = mListData.get(position);
+
+        final TextView content = view.findViewById(R.id.content);
+        final TextView title = view.findViewById(R.id.title);
+        final TextView page_num = view.findViewById(R.id.page_number);
         container.addView(view);
+
+        content.setText(documentResponse.getContent());
+        title.setText(documentResponse.getTitle());
+        page_num.setText(position+1 + "-" + mListData.size());
+
         return view;
     }
 }

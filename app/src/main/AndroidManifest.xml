@@ -11,16 +11,29 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.WelcomeScreenActivity">
-        </activity>
-        <activity android:name=".ui.MainActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:label="">
+        <activity android:name=".admin.ui.EditDeleteQouteActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".admin.ui.AddNewQuoteActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".admin.ui.HomeAdminActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".admin.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ui.WelcomeScreenActivity" >
+
+        </activity>
+        <activity
+            android:name=".ui.MainActivity"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>
 
