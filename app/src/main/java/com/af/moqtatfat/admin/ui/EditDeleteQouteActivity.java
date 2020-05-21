@@ -3,9 +3,11 @@ package com.af.moqtatfat.admin.ui;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,23 +27,31 @@ public class EditDeleteQouteActivity extends AppCompatActivity {
     private EditText title, content;
     private TextView delete, save, back, char_num;
     private String doc_id = "";
+    private ProgressDialog progressDialog;
 
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
+                WindowManager.LayoutParams.FLAG_SECURE);
         setContentView(R.layout.activity_edit_delete_qoute);
         bindView();
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        if (getIntent().hasExtra("doc")){
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("يرجى الانتظار ...");
+        progressDialog.create();
+
+        if (getIntent().hasExtra("doc")) {
             DocumentResponse documentResponse = getIntent().getParcelableExtra("doc");
             if (documentResponse != null) {
-                title.setText(documentResponse.getTitle()+"");
+                title.setText(documentResponse.getTitle() + "");
             }
             if (documentResponse != null) {
-                content.setText(documentResponse.getContent()+"");
+                content.setText(documentResponse.getContent() + "");
             }
             if (documentResponse != null) {
                 doc_id = documentResponse.getDoc_id();
@@ -52,12 +62,12 @@ public class EditDeleteQouteActivity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                char_num.setText(content.length() + ""+"/"+"500");
-                if (content.length() > 500){
+                char_num.setText(content.length() + "" + "/" + "500");
+                if (content.length() > 500) {
                     char_num.setTextColor(getResources().getColor(R.color.red));
                     save.setClickable(false);
                     save.setEnabled(false);
-                }else {
+                } else {
                     char_num.setTextColor(getResources().getColor(R.color.black));
                     save.setClickable(true);
                     save.setEnabled(true);
@@ -75,15 +85,32 @@ public class EditDeleteQouteActivity extends AppCompatActivity {
             }
         });
 
-        char_num.setText(content.length() + ""+"/"+"1000");
+        char_num.setText(content.length() + "" + "/" + "500");
 
         back.setOnClickListener(v -> finish());
         save.setOnClickListener(v -> updateDocument(db, doc_id));
-        delete.setOnClickListener(v -> db.collection(Constants.COLLECTION_NAME).document(doc_id).delete().
-                addOnSuccessListener(aVoid -> finish()).
-                addOnFailureListener(e ->
-                        Toast.makeText(EditDeleteQouteActivity.this, "there something error please try again.!", Toast.LENGTH_SHORT).show()));
 
+        delete.setOnClickListener(v -> {
+
+            if (!progressDialog.isShowing()){
+                progressDialog.show();
+            }
+
+            db.collection(Constants.COLLECTION_NAME).document(doc_id).delete().
+                    addOnSuccessListener(aVoid -> {
+                        if (!progressDialog.isShowing()){
+                            progressDialog.dismiss();
+                        }
+                        finish();
+                    }).
+                    addOnFailureListener(e ->{
+                        if (!progressDialog.isShowing()){
+                            progressDialog.dismiss();
+                        }
+                            Toast.makeText(EditDeleteQouteActivity.this,
+                                    "there something error please try again.!", Toast.LENGTH_SHORT).show();
+                    });
+        });
     }
 
     private void bindView(){
@@ -97,6 +124,10 @@ public class EditDeleteQouteActivity extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     private void updateDocument(FirebaseFirestore db, String doc_id){
+
+        if (!progressDialog.isShowing()){
+            progressDialog.show();
+        }
 
         char_num.setText(content.length() + ""+"/"+"500");
         if (content.length() > 500){
@@ -127,11 +158,18 @@ public class EditDeleteQouteActivity extends AppCompatActivity {
 
                 db.collection(Constants.COLLECTION_NAME).document(doc_id).update(map).
                         addOnSuccessListener(documentReference -> {
+                            if (progressDialog.isShowing()){
+                                progressDialog.dismiss();
+                            }
                             Toast.makeText(this, "Successful Update.!", Toast.LENGTH_LONG).show();
                             finish();
                         })
-                        .addOnFailureListener(e ->
-                                Toast.makeText(this, "There something error please try again.!", Toast.LENGTH_SHORT).show());
+                        .addOnFailureListener(e ->{
+                            if (progressDialog.isShowing()){
+                                progressDialog.dismiss();
+                            }
+                                Toast.makeText(this, "There something error please try again.!", Toast.LENGTH_SHORT).show();
+                        });
             }
         }
     }

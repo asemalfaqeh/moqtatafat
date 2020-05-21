@@ -3,10 +3,12 @@ package com.af.moqtatfat.admin.ui;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,12 +26,20 @@ public class AddNewQuoteActivity extends AppCompatActivity {
 
     EditText title, content;
     TextView back, save, char_num;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
+                WindowManager.LayoutParams.FLAG_SECURE);
         setContentView(R.layout.activity_add_edit_qoute);
         bindViews();
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("يرجى الانتظار ...");
+        progressDialog.create();
 
         save.setOnClickListener(v -> addNewDocument());
         back.setOnClickListener(v -> finish());
@@ -73,6 +83,10 @@ public class AddNewQuoteActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     private void addNewDocument(){
 
+        if (progressDialog.isShowing()){
+            progressDialog.dismiss();
+        }
+
         char_num.setText(content.length() + ""+"/"+"500");
         if (content.length() > 500){
             char_num.setTextColor(getResources().getColor(R.color.red));
@@ -101,10 +115,18 @@ public class AddNewQuoteActivity extends AppCompatActivity {
 
                 db.collection(Constants.COLLECTION_NAME).add(map).
                         addOnSuccessListener(documentReference -> {
+                            if (!progressDialog.isShowing()){
+                                progressDialog.dismiss();
+                            }
                             Toast.makeText(this, "Successful Added.!", Toast.LENGTH_LONG).show();
                             finish();
                         })
-                        .addOnFailureListener(e -> Toast.makeText(this, "There something error please try again.!", Toast.LENGTH_SHORT).show());
+                        .addOnFailureListener(e -> {
+                            if (!progressDialog.isShowing()){
+                                progressDialog.dismiss();
+                            }
+                            Toast.makeText(this, "There something error please try again.!", Toast.LENGTH_SHORT).show();
+                        });
             }
         }
     }

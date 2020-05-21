@@ -11,6 +11,7 @@ import com.af.moqtatfat.utils.Constants;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class FireStoreRepository {
             ArrayList<DocumentResponse> documentResponseArrayList = new ArrayList<>();
 
             FirebaseFirestore db = FirebaseFirestore.getInstance();
-            db.collection(Constants.COLLECTION_NAME)
+            db.collection(Constants.COLLECTION_NAME).orderBy("created_at", Query.Direction.ASCENDING)
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override

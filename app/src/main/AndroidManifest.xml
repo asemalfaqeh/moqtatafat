@@ -27,7 +27,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.WelcomeScreenActivity" >
+        <activity android:name=".ui.WelcomeScreenActivity"
+            android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
         <activity

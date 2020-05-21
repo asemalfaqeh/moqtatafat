@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.af.moqtatfat.R;
 import com.af.moqtatfat.admin.ui.HomeAdminActivity;
 import com.af.moqtatfat.ui.MainActivity;
+import com.af.moqtatfat.ui.WelcomeScreenActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -38,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
            goToHomeUI();
         }
 
-        open_app.setOnClickListener(v -> startActivity(new Intent(this, MainActivity.class)));
+        open_app.setOnClickListener(v -> startActivity(new Intent(this, WelcomeScreenActivity.class)));
         login.setOnClickListener(v -> {
         if (username.getText().toString().isEmpty() || password.getText().toString().isEmpty()){
 

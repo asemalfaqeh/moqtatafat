@@ -6,6 +6,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.WindowManager;
 
 import com.af.moqtatfat.R;
 import com.af.moqtatfat.model.DocumentResponse;
@@ -14,6 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.wajahatkarim3.easyflipviewpager.BookFlipPageTransformer;
@@ -30,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
+                WindowManager.LayoutParams.FLAG_SECURE);
         setContentView(R.layout.activity_main);
         // Get ViewPager and Set Adapter
         myViewPager = findViewById(R.id.pager);
@@ -40,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private void getDocuments(){
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection(Constants.COLLECTION_NAME)
+        db.collection(Constants.COLLECTION_NAME).orderBy("created_at", Query.Direction.ASCENDING)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

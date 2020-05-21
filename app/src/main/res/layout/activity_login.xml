@@ -4,10 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_vertical"
-    android:layout_gravity="center_vertical"
-    android:padding="16dp"
     tools:context=".admin.LoginActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/font_regular"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:background="@color/fab_button_color"
+        android:layout_alignParentTop="true"
+        android:id="@+id/open_app"
+        android:text="@string/open_app"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_centerVertical="true">
+
 
     <EditText
         android:layout_width="match_parent"
@@ -38,17 +54,6 @@
          android:layout_marginTop="32dp"
          android:layout_below="@id/password"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/login_btn"
-        android:layout_marginTop="48dp"
-        android:gravity="center"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:id="@+id/open_app"
-        android:text="فتح التطبيق ->   "/>
-
     <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -57,5 +62,7 @@
         android:layout_marginTop="96dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/login_btn"/>
+
+    </RelativeLayout>
 
 </RelativeLayout>

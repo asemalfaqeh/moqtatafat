@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">moqtatfat</string>
+    <string name="app_name">مقتطفات بقلمي</string>
     <string name="text">
 
 رسالة إلى حبيبي الله :
@@ -11,4 +11,6 @@
     </string>
     <string name="logout">تسجيل الخروج</string>
     <string name="title_quote">العنوان</string>
+    <string name="open_app"><u>فتح التطبيق</u></string>
+    <string name="name_welcome">مقتطفات بقلمي </string>
 </resources>
