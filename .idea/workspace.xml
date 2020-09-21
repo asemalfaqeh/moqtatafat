@@ -9,13 +9,12 @@
     <list default="true" id="b48bfbb6-3f06-47fa-aa10-8feb1e8c51ec" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_10_API_27" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Galaxy_S7_API_27" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -139,6 +138,10 @@
   </component>
   <component name="ProjectId" id="1Ziei1eKBoJLhHvUxIUIpqf2yV7" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="ApkExportedModule" value="app" />
     <property name="ExportApk.ApkPath" value="$PROJECT_DIR$/app" />
@@ -159,18 +162,6 @@
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/app/src/main/res/font" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -249,5 +240,27 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1396" height="365" key="GridCell.Tab.0.bottom" timestamp="1597152469034">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1396" height="365" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1597152469034" />
+    <state width="1396" height="365" key="GridCell.Tab.0.center" timestamp="1597152469033">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1396" height="365" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1597152469033" />
+    <state width="1396" height="365" key="GridCell.Tab.0.left" timestamp="1597152469031">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1396" height="365" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1597152469031" />
+    <state width="1396" height="365" key="GridCell.Tab.0.right" timestamp="1597152469034">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1396" height="365" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1597152469034" />
+    <state x="100" y="100" width="1240" height="700" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1597151562069">
+      <screen x="0" y="23" width="1440" height="835" />
+    </state>
+    <state x="100" y="100" width="1240" height="700" key="com.android.tools.idea.avdmanager.AvdListDialog/0.23.1440.835@0.23.1440.835" timestamp="1597151562069" />
   </component>
 </project>

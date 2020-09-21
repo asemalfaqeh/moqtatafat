@@ -22,6 +22,7 @@ public class HomeAdminActivity extends AppCompatActivity {
     private TextView open_app;
     private RecyclerView recyclerView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
