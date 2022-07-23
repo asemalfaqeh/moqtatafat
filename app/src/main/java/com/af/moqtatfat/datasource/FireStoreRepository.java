@@ -56,7 +56,6 @@ public class FireStoreRepository {
         recyclerView.setAdapter(homeAdminAdapter);
         StaggeredGridLayoutManager st = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(st);
-        homeAdminAdapter.notifyDataSetChanged();
 
     }
 

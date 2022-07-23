@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class FireStoreService {
 
-    private FireStoreRepository fireStoreRepository;
+    private final FireStoreRepository fireStoreRepository;
 
     public FireStoreService(FireStoreRepository fireStoreRepository) {
         this.fireStoreRepository = fireStoreRepository;

@@ -14,8 +14,8 @@ import java.util.List;
 
 public class ViewPagerAdapter extends androidx.viewpager.widget.PagerAdapter {
 
-    private Context mContext;
-    private List<DocumentResponse> mListData;
+    private final Context mContext;
+    private final List<DocumentResponse> mListData;
 
     ViewPagerAdapter(Context context, List<DocumentResponse> listDate) {
         mContext = context;
